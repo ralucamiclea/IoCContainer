@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -46,6 +47,24 @@ namespace HomemadeIoCController
                     {
                         RegType = type,
                         ObjectType = typeof(C)
+                    }
+                );
+        }
+        private void RegisterType(Type i, Type c, REG_TYPE type)
+        {
+            // check if interface already registered
+            if (_registeredInstances.ContainsKey(i) == true)
+            {
+                _registeredInstances.Remove(i);
+            }
+
+            // register interface with concrete type
+            _registeredInstances.Add(
+                i,
+                    new RegistrationModel
+                    {
+                        RegType = type,
+                        ObjectType = c
                     }
                 );
         }
@@ -119,6 +138,20 @@ namespace HomemadeIoCController
             }
 
             return returnedObj;
+        }
+
+        public void Config(JObject mappings, Assembly ass)
+        {
+            foreach (JToken item in mappings["IoCContainer"])
+            {
+                Type _interface = ass.GetType(item["interface"].ToString());
+                Type _type = ass.GetType(item["type"].ToString());
+                string reg_type = item["lifeCycle"].ToString();
+                if(reg_type == "SINGLETON")
+                    RegisterType(_interface, _type, REG_TYPE.SINGLETON);
+                else
+                    this.RegisterType(_interface, _type, REG_TYPE.TRANSIENT);
+            }
         }
     }
 }

@@ -16,6 +16,5 @@ namespace HomemadeIoCController
     {
         internal Type ObjectType { get; set; }
         internal REG_TYPE RegType { get; set; }
-        internal string Regname { get; set; }
     }
 }

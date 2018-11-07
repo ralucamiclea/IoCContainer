@@ -1,0 +1,14 @@
+{
+  "IoCContainer": [
+    {
+      "interface": "ITestClass1",
+      "type": "TestClass1",
+      "lifeCycle": "TRANSIENT"
+    },
+    {
+      "interface": "ITestClass2",
+      "type": "TestClass2",
+      "lifeCycle": "SINGLETON"
+    }
+  ]
+}
