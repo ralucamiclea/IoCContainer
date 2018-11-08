@@ -1,0 +1,14 @@
+{
+  "IoCContainer": [
+    {
+      "interface": "MovieApp.IMovieFinder",
+      "type": "MovieApp.MovieFinderTxt",
+      "lifeCycle": "TRANSIENT"
+    },
+    {
+      "interface": "MovieApp.IMovieLister",
+      "type": "MovieApp.MovieLister",
+      "lifeCycle": "SINGLETON"
+    }
+  ]
+}
