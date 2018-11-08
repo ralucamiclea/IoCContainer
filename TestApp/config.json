@@ -1,13 +1,13 @@
 {
   "IoCContainer": [
     {
-      "interface": "ITestClass1",
-      "type": "TestClass1",
+      "interface": "TestApp.ITestClass1",
+      "type": "TestApp.TestClass1",
       "lifeCycle": "TRANSIENT"
     },
     {
-      "interface": "ITestClass2",
-      "type": "TestClass2",
+      "interface": "TestApp.ITestClass2",
+      "type": "TestApp.TestClass2",
       "lifeCycle": "SINGLETON"
     }
   ]
